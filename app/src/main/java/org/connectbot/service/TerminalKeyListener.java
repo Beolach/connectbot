@@ -67,8 +67,8 @@ public class TerminalKeyListener implements OnKeyListener, OnSharedPreferenceCha
 	private final static int KEYCODE_CTRL_RIGHT = 114;
 	private final static int KEYCODE_INSERT = 124;
 	private final static int KEYCODE_FORWARD_DEL = 112;
-	private final static int KEYCODE_MOVE_HOME = 122;
-	private final static int KEYCODE_MOVE_END = 123;
+	private final static int KEYCODE_MOVE_HOME = 110;
+	private final static int KEYCODE_MOVE_END = 115;
 	private final static int KEYCODE_PAGE_DOWN = 93;
 	private final static int KEYCODE_PAGE_UP = 92;
 	private final static int HC_META_CTRL_ON = 0x1000;
