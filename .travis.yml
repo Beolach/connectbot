@@ -49,10 +49,10 @@ android:
   - android-sdk-license-.+
   - google-gdk-license-.+
 script:
-- "find -iname '*ConnectBot*.apk'
+- "find -iname '*ConnectBot*.apk'"
 - "./gradlew clean build check jacocoUnitTestDebugReport"
 - "./scripts/check-lint-count.bash app/build/outputs/lint-results.xml $HOME/.cache/lint/lint-results.xml"
-- "find -iname '*ConnectBot*.apk'
+- "find -iname '*ConnectBot*.apk'"
 after_success: "ls -AR"
 before_deploy:
   - export RELEASE_PKG_FILE=$(find -iname 'ConnectBot*.apk')
