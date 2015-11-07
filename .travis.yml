@@ -49,9 +49,11 @@ android:
   - android-sdk-license-.+
   - google-gdk-license-.+
 script:
+- "find -iname '*ConnectBot*.apk'
 - "./gradlew clean build check jacocoUnitTestDebugReport"
 - "./scripts/check-lint-count.bash app/build/outputs/lint-results.xml $HOME/.cache/lint/lint-results.xml"
-after_success: "./gradlew coveralls"
+- "find -iname '*ConnectBot*.apk'
+after_success: "ls -AR"
 before_deploy:
   - export RELEASE_PKG_FILE=$(find -iname 'ConnectBot*.apk')
   - echo "Deploying $RELEASE_PKG_FILE to GitHub releases"
@@ -59,6 +61,7 @@ deploy:
   provider: releases
   api_key:
     secure: FfP9H6HfPUpPWQ8MtOtM6cIEV4Mvk2HpFfWlEFqxSPzIMkZ+7CHDERSTKl1esY9oROsEeUkOwKvzRh4u3Bc3GQMllFwLgobcNrxSmjJCijS8BDID+ek5/SLWmrEcIKsMt6mTpQO3Wal7bRCMcV9d5+5bGSYvCZAprGhA3txVX8/atge6Tke2WWoka0tyX1TsTT7KsyCA7V3+56l3t+cs4560tZPKCiwKQkVa9TUDr/UWaYKqFXKGiuvJpq6Dd8BamMCTV3pfCUMYqyi2q+LlyNfut9XGCj20ByC8hT+xI6o9Ohuj6Zt1BUOoexhq4F7pwtaAteVBBjQdB6uJxImRywnS6BUkE9mMaHRAqvgHJkIIy7REEWeKOphbuF0I29uyV2H69UIVLFAHpckV45jOZwRxADlpc4B5Ri8PhGdeQOnnbVQVxof4lCFiONmjC06NV5BBHzidgxgSLfOyhWUdo4TV7y4Te7OYQDpo0AC7y+0cGSkLmKxAqXdECjXWiz0doeGVHfCTvaK8k2oDbK773k4vhy7qObz8waarFpXbFEPCjQeRSoy/EG+fT+NWYbz7sZlD79iSX/QqWxkJiiTijNUlpBU0PbpG4BnPj3pWucHAz1qo2Mx42ZmxS88jDSC8quHbkFkSr9oZZwbubwgUqHUNB3UpbOXys7nsmE4aAYQ=
+  file_glob: true
   file: "${RELEASE_PKG_FILE}"
   skip_cleanup: true
   on:
